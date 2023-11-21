@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운동</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEslP-qX5PsxqDHuuxiGSxqLbdPO9Dh_M&libraries=places"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="login">
+            <h2>로그인</h2>
+            <input type="text" id="username" placeholder="아이디">
+            <input type="password" id="password" placeholder="비밀번호">
+            <input type="button" value="로그인" onclick="login()">
+            <p class="switch1">계정이 없으신가요? <span class="switch2" onclick="showSignup()"> 가입하기</span></p>
+        </div>
+        <div id="signup" class="hidden">
+            <button type="button" onclick="showLogin()" class="back-button"><img src="./img/arrow.png"></button>
+            <h2>가입하기</h2>
+            <input type="text" id="newUsername" placeholder="아이디">
+            <input type="password" id="newPassword" placeholder="비밀번호">
+            <input type="button" value="계정 생성" onclick="signup()">
+        </div>
+        <div id="userDetails" class="hidden">
+            <h2>안녕하세요. <span id="displayName"></span>님!</h2>
+            <p>현재 포인트 : <span id="userPoints">0</span></p>
+            <div id="map"></div>
+            <div id="results"></div>
+            <div id="scoreHistory">
+                <h3>이전 기록 : </h3>
+                <ul id="scoreList"></ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+</html>
