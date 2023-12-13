@@ -5,14 +5,77 @@
 
 body {
     font-family: 'Pretendard';
+    background: linear-gradient(45deg, #6a82fb, #a1c4fd, #c2e9fb, #dcb8f8);
+    background-size: 800% 800%;
+    animation: gradient 600s ease infinite;
 }
 
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 .container {
-    width: 300px;
-    margin: auto;
-    margin-top: 100px;
+    border-radius: 50px; /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 더 진한 그림자 효과 */
+    background-color: white; /* 배경색 */
+    width: 300px; /* 박스 너비 */
+    margin: auto; /* 가운데 정렬 */
+    margin-top: 100px; /* 상단 여백 */
+    max-width: 100%; /* 컨테이너 최대 너비 */
+    padding: 20px; /* 내부 여백 */
+}
+#mainMenu {
+    grid-template-columns: repeat(2, 1fr); /* 두 열로 나눔 */
+    gap: 20px; /* 그리드 간격 */
+    justify-items: center; /* 가운데 정렬 */
+    margin: auto; /* 가운데 정렬 */
 }
 
+
+.menu-button::after {
+    position: absolute;
+    right: 10px; /* 오른쪽 정렬 */
+    top: 0;
+    width: 20px; /* 이모티콘 너비 */
+    height: 100%;
+    overflow: hidden; /* 기본 상태에서 숨김 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button:hover::after {
+    left: 0px;
+    content: attr(data-hover-text); /* 이모티콘 표시 */
+    font-size: 30px; /* 호버 시 폰트 크기 증가 */
+    transform: scale(1.5); /* 호버 시 크기 확대 */
+    width: 100%; /* 호버 시 전체 너비로 확장 */
+}
+#mainMenu button {
+    font-family: 'Pretendard';
+    width: 120px;
+    height: 120px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease;
+}
+#mainMenu h2 {
+    grid-column: 1 / -1; /* h2를 모든 열에 걸쳐 표시 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+#mainMenu button:hover {
+
+    transform: scale(1.05); /* 마우스 오버시 약간 확대 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 강조 */
+}
 input[type="text"],
 input[type="password"],
 input[type="button"],
@@ -24,12 +87,22 @@ input[type="submit"] {
 }
 
 #button {
-    box-sizing: border-box; 
+    font-family: 'Pretendard';
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     padding: 10px;
     margin: 10px 0;
 }
+#button:hover {
 
+    transform: scale(1.05); /* 마우스 오버시 약간 확대 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 그림자 효과 강조 */
+}
 .switch1 {
     text-align: center;
     font-size: 0.9em;
@@ -46,7 +119,9 @@ input[type="submit"] {
 .hidden {
     display: none;
 }
-
+.grid {
+    display: grid;
+}
 .back-button {
     display: block; 
     position: absolute; 
@@ -63,9 +138,59 @@ input[type="submit"] {
     height: auto; 
 }
 
+.back-button2 {
+    display: block; 
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    padding: 5px 10px; 
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.back-button2 img {
+    width: 15px;
+    height: auto; 
+}
+
 
 #signup {
     position: relative;
+}
+#userDetails{
+    position: relative;
+}
+#settings{
+    position: relative;
+}
+#scoreHistory{
+    position: relative;
+}
+#locName{
+    text-align: left;
+    font-size: 20px;
+}
+
+#changeLoc {
+    display: flex;
+    justify-content: space-between;
+}
+.nearLoc, .farLoc {
+    transition: transform 0.3s ease-in-out;
+}
+
+.nearLoc:hover, .farLoc:hover {
+    transform: scale(1.1);
+}
+#changeLoc button{
+    font-family: 'Pretendard';
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+
 }
 
 #map {
@@ -74,4 +199,69 @@ input[type="submit"] {
 }
 #results {
     padding: 20px;
+}
+
+#settings {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+#settings label {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#settings input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.marked {
+    background-color: greenyellow; /* 마킹된 날짜의 배경색 변경 */
+}
+
+
+#calendarHeader {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#calendarHeader select {
+    margin: 0 5px;
+}
+
+#calendar div {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+#calendar div.empty {
+    visibility: hidden; /* 텍스트는 숨기고 공간은 유지 */
+}
+
+
+#calendarDays div {
+    display: inline-block;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    border: none; /* 테두리 제거 */
+    background: none; /* 배경색 제거 */
+}
+
+#limitTime {
+    font-weight: bold;
+}
+
+#scoreList .details {
+    display: none;
 }
