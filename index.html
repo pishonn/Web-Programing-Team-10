@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>운동</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>백석대학교 웹프로그래밍 10조</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEslP-qX5PsxqDHuuxiGSxqLbdPO9Dh_M&libraries=places"></script>
 </head>
@@ -15,7 +15,7 @@
             <h2>로그인</h2>
             <input type="text" id="username" placeholder="아이디">
             <input type="password" id="password" placeholder="비밀번호">
-            <input type="button" value="로그인" onclick="login()">
+            <input type="button" id="button" value="로그인" onclick="login()">
             <p class="switch1">계정이 없으신가요? <span class="switch2" onclick="showSignup()"> 가입하기</span></p>
         </div>
         <div id="signup" class="hidden">
@@ -23,18 +23,73 @@
             <h2>가입하기</h2>
             <input type="text" id="newUsername" placeholder="아이디">
             <input type="password" id="newPassword" placeholder="비밀번호">
-            <input type="button" value="계정 생성" onclick="signup()">
+            <input type="button" id="button" value="계정 생성" onclick="signup()">
         </div>
-        <div id="userDetails" class="hidden">
+        <div id="mainMenu" class="hidden">
             <h2>안녕하세요. <span id="displayName"></span>님!</h2>
+            <button class="menu-button" data-hover-text="🔥" onclick="displayUserDetails()">시작</button>
+            <button class="menu-button" data-hover-text="⚙️" onclick="showSettings()">설정</button>
+            <button class="menu-button" data-hover-text="📅" onclick="showScoreHistory()">기록</button>
+        </div> 
+        <div id="userDetails" class="hidden">
+            <button type="button" onclick="showMainMenu()" class="back-button2"><img src="./img/arrow.png"></button>
+            <h2 id="locName"></h2>
+            <div id="limitTime"></div>
             <p>현재 포인트 : <span id="userPoints">0</span></p>
             <div id="map"></div>
             <div id="results"></div>
-            <div id="scoreHistory">
-                <h3>이전 기록 : </h3>
-                <ul id="scoreList"></ul>
+            <div id="changeLoc">
+                <button class="nearLoc" onclick="minusIndex()">← 더 가까운 장소</button>
+                <button class="farLoc" onclick="plusIndex()">더 먼 장소 →</button>
             </div>
 
+        </div>
+        <div id="settings" class="hidden">
+            <button type="button" onclick="showMainMenu()" class="back-button2"><img src="./img/arrow.png"></button>
+            <h2>설정</h2>
+            <div class="input-group">
+                <label><input type="radio" name="mode" value="auto" id="autoMode"> 자동 모드</label>
+                <label><input type="radio" name="mode" value="manual" id="manualMode"> 수동 모드</label>
+            </div>
+        
+            <div class="input-group">
+                <label>검색 장소:</label>
+                <label><input type="checkbox" name="place" value="park"> 공원</label>
+                <label><input type="checkbox" name="place" value="convenience_store"> 편의점</label>
+                <label><input type="checkbox" name="place" value="cafe"> 카페</label>
+                <label><input type="checkbox" name="place" value="gym"> 체육관</label>
+                <label><input type="checkbox" name="place" value="library"> 도서관</label>
+                <label><input type="checkbox" name="place" value="cinema"> 영화관</label>
+                <label><input type="checkbox" name="place" value="subway_station"> 지하철역</label>
+            </div>
+        
+            <div class="input-group">
+                <label for="searchRadius">검색 반경(m):</label>
+                <input type="number" id="searchRadius" min="1000", max="50000">
+            </div>
+        
+            <div class="input-group">
+                <label for="minDistance">최소 직선 거리(km):</label>
+                <input type="number" id="minDistance" min="0.2", max="5">
+            </div>
+            <div>
+                <button id="button" onclick="applySetting()">설정 완료</button>
+            </div>
+        </div>
+        
+        <div id="scoreHistory" class="hidden">
+            <button type="button" onclick="showMainMenu()" class="back-button2"><img src="./img/arrow.png"></button>
+            <h2>기록</h2>
+            <div id="calendarContainer">
+                <div id="calendarHeader">
+                    <select id="yearSelect"></select>
+                    <select id="monthSelect"></select>
+                    <div id="calendarDays"></div>
+                </div>
+                <div id="calendar"></div>
+            </div>
+            <h3>이전 기록 : </h3>
+            <ul id="scoreList"></ul>
         </div>
     </div>
 </body>
