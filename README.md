@@ -11,7 +11,7 @@ This is a running webpage created using HTML, CSS, and JavaScript.
 This application was developed as part of a team project, but all development work, including coding, testing, and documentation, was solely carried out by myself.
 The development process is detailed in the Notion link below.
 
-[Notion](https://tar-beast-134.notion.site/0cd7bc5fa4e54517bfa0730b6f9d823c)
+[Notion](https://tar-beast-134.notion.site/a69a754afce0477baeaca68326450183)
 
 
 ## Features
