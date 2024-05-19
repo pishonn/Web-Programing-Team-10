@@ -5,7 +5,7 @@
 ## Overview
 html/css/javascript 를 이용해 만든 런닝 웹페이지입니다.
 이 웹페이지는 백석대학교 웹프로그래밍 수업의 팀 프로젝트 과제 수행을 목적으로 개발되었으나, 코딩, 테스트, 문서화 등 모든 개발 작업은 전적으로 혼자 수행하였습니다.
-개발 과정은 아래 노션 링크에 상세히 기재 되어있습니다.
+개발 과정은 아래 노션 링크에 상세히 기재되어 있습니다.
 
 This is a running webpage created using HTML, CSS, and JavaScript.
 This application was developed as part of a team project, but all development work, including coding, testing, and documentation, was solely carried out by myself.
